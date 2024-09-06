@@ -1,0 +1,64 @@
+.navbar {
+    display: none;
+}
+
+.box-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    width: 80%;
+    height: 95%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.box {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+}
+
+@media (max-width: 769px) {
+    .box-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+
+        width: 80vw;
+    }
+
+    .box {
+        height: 40vh;
+    }
+}
+
+/* when siderbar gets hidden */
+@media (max-width: 990px) {
+    .navbar {
+        display: block;
+        background-color: transparent;
+        padding: 10px 10px 20px 20px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .menu-icon-container {
+        margin-right: 20px;
+    }
+    .menu-icon {
+        color: white;
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 320px) {
+    .box-container {
+        width: 95vw;
+    }
+}
