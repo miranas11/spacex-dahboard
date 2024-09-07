@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "../style/LaunchBox.css";
 import apiController from "../controller/apiController";
 import { MoonLoader } from "react-spinners";
@@ -13,7 +13,7 @@ const LaunchBox = ({ upcoming }) => {
         launchpad_name: "",
     });
 
-    const getUpcomingLaunch = async () => {
+    const getUpcomingLaunch = useCallback(async () => {
         const response = await (upcoming
             ? apiController.getUpcomingLaunch()
             : apiController.getPreviousLaunch());
@@ -25,12 +25,13 @@ const LaunchBox = ({ upcoming }) => {
             flight_number: response.flight_number,
             launchpad_name: response.launchpad.name,
         });
+        console.log("a");
         setloading(false);
-    };
+    }, [upcoming]);
 
     useEffect(() => {
         getUpcomingLaunch();
-    }, []);
+    }, [getUpcomingLaunch]);
 
     return (
         <div className="box upcoming-launch-container">
