@@ -1,0 +1,25 @@
+.navbar {
+    display: none;
+}
+
+@media (max-width: 990px) {
+    .navbar {
+        display: block;
+        background-color: transparent;
+        padding: 10px 10px 0px 20px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .menu-icon-container {
+        margin-right: 20px;
+    }
+
+    .menu-icon {
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+    }
+}

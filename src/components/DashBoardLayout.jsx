@@ -1,38 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import "../style/DashBoardLayout.css";
-import { Link, Outlet } from "react-router-dom";
-import spacexLogo from "../assets/spacex-logo.png";
+import { Outlet } from "react-router-dom";
+import SideBar from "./SideBar";
+import NavBar from "./NavBar";
 
 const DashBoardLayout = () => {
+    const [rightSideBar, setRightSideBar] = useState(false);
+
+    const toggleSideBar = () => {
+        setRightSideBar(!rightSideBar);
+    };
+
     return (
         <div className="background">
             <div className="dashboard-container">
-                <SideBar />
+                <SideBar position="left" />
                 <div className="content">
-                    <Outlet></Outlet>
+                    <NavBar
+                        rightSideBar={rightSideBar}
+                        toggleSideBar={toggleSideBar}
+                    />
+                    <Outlet />
                 </div>
+
+                <SideBar
+                    position="right"
+                    isOpen={rightSideBar}
+                    toggleSideBar={toggleSideBar}
+                />
             </div>
         </div>
     );
 };
 
 export default DashBoardLayout;
-
-const SideBar = () => {
-    return (
-        <div className="sidebar">
-            <div className="logo-container">
-                <img src={spacexLogo} alt="SpaceX Logo" className="logo" />
-            </div>
-
-            <div className="menu">
-                <Link to="/">
-                    <h2>Dashboard</h2>
-                </Link>
-                <Link to="/rockets">
-                    <h2>Rockets</h2>
-                </Link>
-            </div>
-        </div>
-    );
-};
