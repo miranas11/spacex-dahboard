@@ -24,9 +24,6 @@ const Rockets = () => {
 };
 
 const RocketBox = ({ rocket }) => {
-    useEffect(() => {
-        console.log(rocket);
-    }, []);
     return (
         <div className="rocket-card">
             <div className="rocket-title">{rocket.name}</div>
