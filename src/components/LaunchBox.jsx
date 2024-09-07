@@ -25,7 +25,6 @@ const LaunchBox = ({ upcoming }) => {
             flight_number: response.flight_number,
             launchpad_name: response.launchpad.name,
         });
-        console.log("a");
         setloading(false);
     }, [upcoming]);
 
