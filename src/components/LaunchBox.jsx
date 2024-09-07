@@ -82,7 +82,7 @@ const LaunchBox = ({ upcoming }) => {
                             {launch?.launchpad_name || "N/A"}
                         </div>
                     </div>
-                    <div className="upcoming-launch-links">
+                    {/* <div className="upcoming-launch-links">
                         <a href="#" className="launch-link">
                             <i className="fab fa-wikipedia-w"></i>
                         </a>
@@ -92,7 +92,7 @@ const LaunchBox = ({ upcoming }) => {
                         <a href="#" className="launch-link">
                             <i className="fab fa-reddit"></i>
                         </a>
-                    </div>
+                    </div> */}
                 </>
             )}
         </div>
