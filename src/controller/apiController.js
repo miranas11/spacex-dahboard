@@ -1,149 +1,147 @@
 import axios from "axios";
 
-const getUpcomingLaunch = async () => {
-    try {
-        const response = await axios.post(
-            `https://api.spacexdata.com/v5/launches/query`,
-            {
-                query: {
-                    upcoming: true,
-                },
-                options: {
-                    limit: 1,
-                    sort: {
-                        flight_number: "asc",
+const apiController = {
+    getUpcomingLaunch: async () => {
+        try {
+            const response = await axios.post(
+                `https://api.spacexdata.com/v5/launches/query`,
+                {
+                    query: {
+                        upcoming: true,
                     },
-                    populate: [
-                        {
-                            path: "cores",
+                    options: {
+                        limit: 1,
+                        sort: {
+                            flight_number: "asc",
                         },
-                        {
-                            path: "launchpad",
-                        },
-                        {
-                            path: "rocket",
-                            select: {
-                                name: 1,
+                        populate: [
+                            {
+                                path: "cores",
                             },
-                        },
-                        {
-                            path: "fairings",
-                        },
-                        {
-                            path: "capsules",
-                        },
-                        {
-                            path: "payloads",
-                        },
-                        {
-                            path: "crew",
-                            populate: [
-                                {
-                                    path: "crew",
+                            {
+                                path: "launchpad",
+                            },
+                            {
+                                path: "rocket",
+                                select: {
+                                    name: 1,
                                 },
-                            ],
-                        },
-                        {
-                            path: "cores",
-                            populate: [
-                                {
-                                    path: "core",
-                                },
-                                {
-                                    path: "landpad",
-                                },
-                            ],
-                        },
-                    ],
-                },
-            }
-        );
-        return response.data.docs[0];
-    } catch (error) {
-        console.log("Error Getting Upcoming Launch:", error.response.data);
-        return error.response;
-    }
-};
-
-const getPreviousLaunch = async () => {
-    try {
-        const response = await axios.post(
-            `https://api.spacexdata.com/v5/launches/query`,
-            {
-                query: {
-                    upcoming: false,
-                },
-                options: {
-                    limit: 1,
-                    sort: {
-                        flight_number: "desc",
+                            },
+                            {
+                                path: "fairings",
+                            },
+                            {
+                                path: "capsules",
+                            },
+                            {
+                                path: "payloads",
+                            },
+                            {
+                                path: "crew",
+                                populate: [
+                                    {
+                                        path: "crew",
+                                    },
+                                ],
+                            },
+                            {
+                                path: "cores",
+                                populate: [
+                                    {
+                                        path: "core",
+                                    },
+                                    {
+                                        path: "landpad",
+                                    },
+                                ],
+                            },
+                        ],
                     },
-                    populate: [
-                        {
-                            path: "cores",
+                }
+            );
+            return response.data.docs[0];
+        } catch (error) {
+            console.log("Error Getting Upcoming Launch:", error.response.data);
+            return error.response;
+        }
+    },
+
+    getPreviousLaunch: async () => {
+        try {
+            const response = await axios.post(
+                `https://api.spacexdata.com/v5/launches/query`,
+                {
+                    query: {
+                        upcoming: false,
+                    },
+                    options: {
+                        limit: 1,
+                        sort: {
+                            flight_number: "desc",
                         },
-                        {
-                            path: "launchpad",
-                        },
-                        {
-                            path: "rocket",
-                            select: {
-                                name: 1,
+                        populate: [
+                            {
+                                path: "cores",
                             },
-                        },
-                        {
-                            path: "fairings",
-                        },
-                        {
-                            path: "capsules",
-                        },
-                        {
-                            path: "payloads",
-                        },
-                        {
-                            path: "crew",
-                            populate: [
-                                {
-                                    path: "crew",
+                            {
+                                path: "launchpad",
+                            },
+                            {
+                                path: "rocket",
+                                select: {
+                                    name: 1,
                                 },
-                            ],
-                        },
-                        {
-                            path: "cores",
-                            populate: [
-                                {
-                                    path: "core",
-                                },
-                                {
-                                    path: "landpad",
-                                },
-                            ],
-                        },
-                    ],
-                },
-            }
-        );
-        return response.data.docs[0];
-    } catch (error) {
-        console.log("Error Getting Upcoming Launch:", error.response.data);
-        return error.response;
-    }
+                            },
+                            {
+                                path: "fairings",
+                            },
+                            {
+                                path: "capsules",
+                            },
+                            {
+                                path: "payloads",
+                            },
+                            {
+                                path: "crew",
+                                populate: [
+                                    {
+                                        path: "crew",
+                                    },
+                                ],
+                            },
+                            {
+                                path: "cores",
+                                populate: [
+                                    {
+                                        path: "core",
+                                    },
+                                    {
+                                        path: "landpad",
+                                    },
+                                ],
+                            },
+                        ],
+                    },
+                }
+            );
+            return response.data.docs[0];
+        } catch (error) {
+            console.log("Error Getting Upcoming Launch:", error.response.data);
+            return error.response;
+        }
+    },
+
+    getRockets: async () => {
+        try {
+            const response = await axios.get(
+                `https://api.spacexdata.com/v4/rockets`
+            );
+            return response;
+        } catch (error) {
+            console.log("Error Getting Upcoming Launch:", error.response.data);
+            return error.response;
+        }
+    },
 };
 
-const getRockets = async () => {
-    try {
-        const response = await axios.get(
-            `https://api.spacexdata.com/v4/rockets`
-        );
-        return response;
-    } catch (error) {
-        console.log("Error Getting Upcoming Launch:", error.response.data);
-        return error.response;
-    }
-};
-
-export default {
-    getUpcomingLaunch,
-    getPreviousLaunch,
-    getRockets,
-};
+export default apiController;
