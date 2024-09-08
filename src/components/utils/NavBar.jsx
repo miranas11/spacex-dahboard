@@ -1,8 +1,8 @@
 import React from "react";
 import { FaAlignJustify } from "react-icons/fa6";
 
-import spacexLogo from "../assets/spacex-logo-white.png";
-import "../style/NavBar.css";
+import spacexLogo from "../../assets/spacex-logo-white.png";
+import "../../style/NavBar.css";
 
 const NavBar = ({ toggleSideBar }) => {
     return (

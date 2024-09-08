@@ -1,0 +1,178 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.modal-container {
+    background-color: #ededed;
+    width: 70vw;
+    height: 70%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-header {
+    display: flex;
+    width: 100%;
+    padding: 0px 50px;
+    justify-content: space-between;
+}
+
+.tab-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.tab-menu h2 {
+    font-size: 30px;
+}
+
+.tab-menu span {
+    cursor: pointer;
+    color: #666;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.tab-menu .active {
+    font-weight: bold;
+    color: black;
+}
+
+.close-btn {
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.modal-content {
+    width: 100%;
+    height: 80%;
+}
+
+.modal-overview {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 10px;
+}
+
+.modal-image-wrapper {
+    border-radius: 10px;
+    width: 30%;
+    max-width: 400px;
+    height: 100%;
+    gap: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.modal-description {
+    border-radius: 10px;
+    background-color: white;
+    color: white;
+    padding: 10px;
+    width: 65%;
+}
+
+.modal-description h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.modal-description p {
+    font-size: 15px;
+    color: #333;
+}
+
+.modal-photos {
+    height: 100%;
+}
+
+.image-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    height: 100%;
+}
+
+.arrow-button {
+    background-color: transparent;
+    border: none;
+    padding: 15px;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 2;
+}
+.caraosel-image-wrapper {
+    padding-top: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+@media (max-width: 769px) {
+    .modal-header {
+        padding: 0px 20px;
+    }
+    .tab-menu h2 {
+        font-size: 20px;
+    }
+
+    .tab-menu span {
+        cursor: pointer;
+        color: #666;
+        font-size: 13px;
+        font-weight: 600;
+    }
+    .modal-overview {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .modal-image-wrapper {
+        width: 90%;
+        max-width: 400px;
+        height: 100%;
+    }
+
+    .modal-description {
+        width: 90%;
+    }
+}

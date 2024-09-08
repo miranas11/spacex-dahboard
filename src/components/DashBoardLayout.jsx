@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../style/DashBoardLayout.css";
 import { Outlet } from "react-router-dom";
-import SideBar from "./SideBar";
-import NavBar from "./NavBar";
+import SideBar from "./utils/SideBar";
+import NavBar from "./utils/NavBar";
 
 const DashBoardLayout = () => {
     const [rightSideBar, setRightSideBar] = useState(false);

@@ -1,5 +1,5 @@
 import React from "react";
-import spacexLogo from "../assets/spacex-logo.png";
+import spacexLogo from "../../assets/spacex-logo.png";
 import { Link } from "react-router-dom";
 import { FaXmark } from "react-icons/fa6";
 

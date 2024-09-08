@@ -1,13 +1,26 @@
 import React, { useEffect, useState } from "react";
 import "../style/Rockets.css";
 import apiController from "../controller/apiController";
+import RocketModal from "./utils/RocketModal";
 
 const Rockets = () => {
     const [rocketsData, setRocketsData] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedRocket, setSelectedRocket] = useState(null);
 
     const getRockets = async () => {
         const response = await apiController.getRockets();
         setRocketsData(response.data);
+    };
+
+    const openModal = (rocket) => {
+        setSelectedRocket(rocket);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedRocket(null);
     };
 
     useEffect(() => {
@@ -17,15 +30,18 @@ const Rockets = () => {
     return (
         <div className="rocket-box-container">
             {rocketsData.slice(1).map((rocket, i) => (
-                <RocketBox rocket={rocket} key={i} />
+                <RocketBox rocket={rocket} openModal={openModal} key={i} />
             ))}
+            {isModalOpen && (
+                <RocketModal closeModal={closeModal} rocket={selectedRocket} />
+            )}
         </div>
     );
 };
 
-const RocketBox = ({ rocket }) => {
+const RocketBox = ({ rocket, openModal }) => {
     return (
-        <div className="rocket-card">
+        <div className="rocket-card" onClick={() => openModal(rocket)}>
             <div className="rocket-title">{rocket.name}</div>
             <div className="rocket-image-wrapper">
                 <img
