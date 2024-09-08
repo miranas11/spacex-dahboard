@@ -7,19 +7,15 @@ import {
     setUpcomingLaunch,
 } from "../../redux/slice/launchSlice";
 
+import upcomingLogo from "../../assets/upcoming-logo.png";
+import previousLogo from "../../assets/previous-logo.png";
+
 const LaunchBox = ({ upcoming }) => {
     const dispatch = useDispatch();
     const launchData = useSelector((state) =>
         upcoming ? state.launch.upcomingLaunch : state.launch.previousLaunch
     );
     const [loading, setloading] = useState(true);
-    // const [launch, setLaunch] = useState({
-    //     mission_name: "",
-    //     rocket_name: "",
-    //     date: "",
-    //     flight_number: "",
-    //     launchpad_name: "",
-    // });
 
     const getUpcomingLaunch = useCallback(async () => {
         if (!launchData) {
@@ -77,11 +73,18 @@ const LaunchBox = ({ upcoming }) => {
                                 </div>
                             </div>
                         </div>
-                        <img
-                            src="/path/to/rocket-logo.png"
-                            alt="Rocket Logo"
-                            className="rocket-logo"
-                        />
+                        <div className="rocket-logo-container">
+                            <div className="launch-label">
+                                {upcoming ? "Rocket Logo" : "Mission Patch"}
+                            </div>
+                            <div className="rocket-logo-wrapper">
+                                <img
+                                    src={upcoming ? upcomingLogo : previousLogo}
+                                    alt="Rocket Logo"
+                                    className="rocket-logo"
+                                />
+                            </div>
+                        </div>
                     </div>
                     <div className="launch-detail">
                         <div className="launch-label">TIME (UTC)</div>

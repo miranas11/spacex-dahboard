@@ -54,7 +54,7 @@ const RocketModal = ({ closeModal, rocket }) => {
                                 >
                                     {"<"}
                                 </button>
-                                {/* Image display */}
+
                                 <div className="caraosel-image-wrapper">
                                     <img
                                         src={rocket.flickr_images[imageIndex]}
